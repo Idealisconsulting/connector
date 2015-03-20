@@ -21,6 +21,14 @@
             action="action_queue_job"
             parent="menu_queue"/>
 
+        <menuitem id="menu_queue_job_channel"
+            action="action_queue_job_channel"
+            parent="menu_queue"/>
+
+        <menuitem id="menu_queue_job_function"
+            action="action_queue_job_function"
+            parent="menu_queue"/>
+
         <menuitem id="menu_checkpoint"
             parent="menu_connector"
             name="Checkpoint"
