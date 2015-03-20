@@ -67,6 +67,7 @@ class Worker(threading.Thread):
         threading.current_thread().dbname = db_name
         self.uuid = unicode(uuid.uuid4())
         self.watcher = watcher_
+        self.channels = watcher_.channels
 
     def run_job(self, job):
         """ Execute a job """
@@ -219,9 +220,10 @@ class WorkerWatcher(threading.Thread):
     necessary to check the aliveness of the workers for every database.
     """
 
-    def __init__(self):
+    def __init__(self, channels=None):
         super(WorkerWatcher, self).__init__()
         self._workers = {}
+        self.channels = channels
 
     def _new(self, db_name):
         """ Create a new worker for the database """

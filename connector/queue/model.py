@@ -225,6 +225,7 @@ class QueueWorker(models.Model):
                               inverse_name='worker_id',
                               string='Jobs',
                               readonly=True)
+    channels = fields.Char(readonly=True)
 
     @api.model
     def _notify_alive(self, worker):
@@ -232,10 +233,12 @@ class QueueWorker(models.Model):
 
         now = fields.Datetime.now()
         if not workers:
+            channels = ', '.join(worker.channels) if worker.channels else False
             self.create({'uuid': worker.uuid,
                          'pid': os.getpid(),
                          'date_start': now,
                          'date_alive': now,
+                         'channels': channels,
                          })
         else:
             workers.write({'date_alive': now})
@@ -264,7 +267,7 @@ class QueueWorker(models.Model):
         return workers
 
     @api.model
-    def assign_then_enqueue(self, max_jobs=None):
+    def assign_then_enqueue(self, max_jobs=None, channels=None):
         """ Assign all the jobs not already assigned to a worker.
         Then enqueue all the jobs having a worker but not enqueued.
 
@@ -278,14 +281,14 @@ class QueueWorker(models.Model):
         :param max_jobs: maximal limit of jobs to assign on a worker
         :type max_jobs: int
         """
-        self.assign_jobs(max_jobs=max_jobs)
+        self.assign_jobs(max_jobs=max_jobs, channels=channels)
         self.env.cr.commit()
         self.enqueue_jobs()
         self.env.cr.commit()
         return True
 
     @api.model
-    def assign_jobs(self, max_jobs=None):
+    def assign_jobs(self, max_jobs=None, channels=None):
         """ Assign ``n`` jobs to the worker of the current process
 
         ``n`` is ``max_jobs`` or unlimited if ``max_jobs`` is None
@@ -295,7 +298,7 @@ class QueueWorker(models.Model):
         """
         worker = watcher.worker_for_db(self.env.cr.dbname)
         if worker:
-            self._assign_jobs(max_jobs=max_jobs)
+            self._assign_jobs(max_jobs=max_jobs, channels=channels)
         else:
             _logger.debug('No worker started for process %s', os.getpid())
         return True
@@ -313,12 +316,19 @@ class QueueWorker(models.Model):
         return True
 
     @api.model
-    def _assign_jobs(self, max_jobs=None):
+    def _assign_jobs(self, max_jobs=None, channels=None):
         sql = ("SELECT id FROM queue_job "
                "WHERE worker_id IS NULL "
                "AND state not in ('failed', 'done') "
-               "AND active = true "
-               "ORDER BY eta NULLS LAST, priority, date_created ")
+               "AND active = true ")
+        sql_args = []
+        if channels and 'all' not in channels:
+            if 'default' in channels:
+                sql += "AND channel IS NULL "
+            else:
+                sql += "AND channel IN %s "
+                sql_args.append(channels)
+        sql += "ORDER BY eta NULLS LAST, priority, date_created "
         if max_jobs is not None:
             sql += ' LIMIT %d' % max_jobs
         sql += ' FOR UPDATE NOWAIT'
@@ -328,7 +338,7 @@ class QueueWorker(models.Model):
         worker = watcher.worker_for_db(self.env.cr.dbname)
         self.env.cr.execute("SAVEPOINT queue_assign_jobs")
         try:
-            self.env.cr.execute(sql, log_exceptions=False)
+            self.env.cr.execute(sql, tuple(sql_args), log_exceptions=False)
         except Exception:
             # Here it's likely that the FOR UPDATE NOWAIT failed to get
             # the LOCK, so we ROLLBACK to the SAVEPOINT to restore the

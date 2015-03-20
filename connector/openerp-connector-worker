@@ -2,8 +2,8 @@
 import re
 import sys
 import logging
+import optparse
 import os
-import signal
 import time
 import threading
 from contextlib import closing
@@ -25,18 +25,40 @@ class Multicornnector(workers.PreforkServer):
     def __init__(self, app):
         super(Multicornnector, self).__init__(app)
         self.address = ('0.0.0.0', 0)
-        self.population = config['workers'] or 1
+        self.channels_population = channels_population = config['channels']
+        self.population = sum(pop for pop in channels_population.itervalues())
         self.workers_connector = {}
+        self.worker_pid_to_channels = {}
+        for channels in channels_population:
+            self.workers_connector[channels] = {}
 
     def process_spawn(self):
-        while len(self.workers_connector) < self.population:
-            self.worker_spawn(WorkerConnector, self.workers_connector)
+        for channels, channel_workers in self.workers_connector.iteritems():
+            while len(channel_workers) < self.channels_population[channels]:
+                self.worker_spawn(WorkerConnector,
+                                  channel_workers,
+                                  channels)
+
+    def worker_spawn(self, klass, workers_registry, channels):
+        self.generation += 1
+        worker = klass(self, channels)
+        pid = os.fork()
+        if pid != 0:
+            worker.pid = pid
+            self.workers[pid] = worker
+            workers_registry[pid] = worker
+            self.worker_pid_to_channels[pid] = channels
+            return worker
+        else:
+            worker.run()
+            sys.exit(0)
 
     def worker_pop(self, pid):
         if pid in self.workers:
             _logger.debug("Worker (%s) unregistered", pid)
+            channels = self.worker_pid_to_channels[pid]
             try:
-                self.workers_connector.pop(pid, None)
+                self.workers_connector[channels].pop(pid, None)
                 u = self.workers.pop(pid)
                 u.close()
             except OSError:
@@ -46,9 +68,10 @@ class Multicornnector(workers.PreforkServer):
 class WorkerConnector(workers.Worker):
     """ HTTP Request workers """
 
-    def __init__(self, multi):
+    def __init__(self, multi, channels):
         super(WorkerConnector, self).__init__(multi)
         self.db_index = 0
+        self.channels = channels
 
     def _work_database(self, cr):
         db_name = cr.dbname
@@ -58,7 +81,8 @@ class WorkerConnector(workers.Worker):
                        "AND state = %s", ('connector', 'installed'),
                        log_exceptions=False)
         except ProgrammingError as err:
-            if unicode(err).startswith('relation "ir_module_module" does not exist'):
+            if unicode(err).startswith('relation "ir_module_module" '
+                                       'does not exist'):
                 _logger.debug('Database %s is not an OpenERP database,'
                               ' connector worker not started', db_name)
             else:
@@ -71,7 +95,8 @@ class WorkerConnector(workers.Worker):
                     queue_worker = registry['queue.worker']
                     queue_worker.assign_then_enqueue(cr,
                                                      openerp.SUPERUSER_ID,
-                                                     max_jobs=MAX_JOBS)
+                                                     max_jobs=MAX_JOBS,
+                                                     channels=self.channels)
                 RegistryManager.signal_caches_change(db_name)
 
     def process_work(self):
@@ -79,7 +104,7 @@ class WorkerConnector(workers.Worker):
             if config['db_name']:
                 db_names = config['db_name'].split(',')
             else:
-               db_names = openerp.service.db.exp_list(True)
+                db_names = openerp.service.db.exp_list(True)
             dbfilter = config['dbfilter']
             if dbfilter and db_names:
                 db_names = [d for d in db_names if re.match(dbfilter, d)]
@@ -102,12 +127,54 @@ class WorkerConnector(workers.Worker):
 
     def start(self):
         workers.Worker.start(self)
+        from openerp.addons.connector.queue.worker import watcher
+        watcher.channels = self.channels
+
+
+def channels_parse_option(option, opt, value, parser):
+    setattr(parser.values, option.dest, parse_channels(value))
+
+
+def parse_channels(channel_option):
+    """ Parse the channels options
+
+    Examples:
+
+        default:1
+        all:1
+        export:1
+        export:import:2
+        export:import:other:4
+
+    """
+    result = {}
+    for option in channel_option.split(','):
+
+        items = option.split(':')
+        assert len(items) > 1, "channels are in the form 'channel:2'"
+        channels = tuple(items[:-1])
+        quantity = int(items[-1])
+        result[channels] = quantity
+    return result
 
 
 if __name__ == "__main__":
+    parser = config.parser
+    group = optparse.OptionGroup(parser, "Connector Options")
+    group.add_option("--channels", dest="channels",
+                     type='string', action='callback',
+                     default='all:1',
+                     callback=channels_parse_option,
+                     help="TODO: describe channels")
+    parser.add_option_group(group)
+
     args = sys.argv[1:]
     servercli.check_root_user()
     config.parse_config(args)
+    opt, args = parser.parse_args(args or [])
+    config['channels'] = opt.channels
+    if config.get('workers', 0) > 1:
+        _logger.warn('--workers has no effect, use --channels')
 
     servercli.check_postgres_user()
     openerp.netsvc.init_logger()
