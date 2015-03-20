@@ -21,19 +21,23 @@
             action="action_queue_job"
             parent="menu_queue"/>
 
-        <menuitem id="menu_queue_job_channel"
-            action="action_queue_job_channel"
-            parent="menu_queue"/>
-
-        <menuitem id="menu_queue_job_function"
-            action="action_queue_job_function"
-            parent="menu_queue"/>
-
         <menuitem id="menu_checkpoint"
             parent="menu_connector"
             name="Checkpoint"
             action="action_connector_checkpoint"
             sequence="20"/>
+
+        <menuitem id="menu_configuration"
+            name="Configuration"
+            parent="menu_connector_root"/>
+
+        <menuitem id="menu_queue_job_channel"
+            action="action_queue_job_channel"
+            parent="menu_configuration"/>
+
+        <menuitem id="menu_queue_job_function"
+            action="action_queue_job_function"
+            parent="menu_configuration"/>
 
     </data>
 </openerp>
