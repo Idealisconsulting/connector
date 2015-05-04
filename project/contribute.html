@@ -60,7 +60,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../index.html">
-          OpenERP Connector</a>
+          Odoo Connector</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
@@ -79,18 +79,19 @@
       aria-labelledby="dLabelGlobalToc"><ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">Contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#want-to-start-a-new-connector">Want to start a new connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-or-maintaining-a-translation-of-this-doc">Creating or maintaining a translation of this doc</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="contributors.html#financial-contributors">Financial Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#not-released">3.0.0 (not released)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id2">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id3">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id2">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id3">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id4">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - warning: breaks compatibility)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id4">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="changes.html#id5">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id5">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changes.html#id6">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="roadmap.html">Roadmap</a></li>
@@ -117,7 +118,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/bootstrap_connector.html">Boostrapping a connector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../guides/bootstrap_connector.html#openerp-manifest">OpenERP Manifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/bootstrap_connector.html#odoo-manifest">Odoo Manifest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/bootstrap_connector.html#install-the-module-in-the-connector">Install the module in the connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/bootstrap_connector.html#declare-the-backends">Declare the backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/bootstrap_connector.html#backend-model">Backend Model</a></li>
@@ -168,6 +169,7 @@
 <li><a class="reference internal" href="#naming-conventions">Naming conventions</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#creating-or-maintaining-a-translation-of-this-doc">Creating or maintaining a translation of this doc</a></li>
 </ul>
 </li>
 </ul>
@@ -229,8 +231,8 @@ information is the same.</p>
 <p>If you want to start a new connector based on the framework,
 a sane approach is to read this documentation, especially
 <a class="reference internal" href="../guides/concepts.html#concepts"><span>Connector Concepts</span></a> and <a class="reference internal" href="../guides/bootstrap_connector.html#bootstrap-connector"><span>Boostrapping a connector</span></a>.</p>
-<p>Then, my personal advice is to look at the existing connectors (<a class="reference external" href="https://github.com/OCA/connector-magento">OpenERP
-Magento Connector</a>, <a class="reference external" href="https://github.com/OCA/connector-prestashop">OpenERP Prestashop Connector</a>). You will also probably
+<p>Then, my personal advice is to look at the existing connectors (<a class="reference external" href="https://github.com/OCA/connector-magento">Odoo
+Magento Connector</a>, <a class="reference external" href="https://github.com/OCA/connector-prestashop">Odoo Prestashop Connector</a>). You will also probably
 need to dive a bit in the framework&#8217;s code.</p>
 <p>If the connector belongs to the e-commerce domain, you may want to reuse the pieces
 of the <a class="reference external" href="https://github.com/OCA/connector-ecommerce">E-Commerce Connector</a> module.</p>
@@ -241,7 +243,7 @@ of the <a class="reference external" href="https://github.com/OCA/connector-ecom
 <blockquote>
 <div>connector-xxx</div></blockquote>
 <dl class="docutils">
-<dt>Name of the OpenERP module:</dt>
+<dt>Name of the Odoo module:</dt>
 <dd>connector_xxx</dd>
 <dt>Example:</dt>
 <dd><p class="first"><a class="reference external" href="https://github.com/OCA/connector-magento">https://github.com/OCA/connector-magento</a></p>
@@ -252,6 +254,42 @@ of the <a class="reference external" href="https://github.com/OCA/connector-ecom
 for historical reasons (magentoerpconnect, prestashoperpconnect).
 New projects should ideally respect it.</p>
 </div>
+</div>
+<div class="section" id="creating-or-maintaining-a-translation-of-this-doc">
+<h2>Creating or maintaining a translation of this doc<a class="headerlink" href="#creating-or-maintaining-a-translation-of-this-doc" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Install Odoo, its dependencies, sphinx, sphinx_bootstrap_theme and
+sphinx-intl</li>
+<li>Add <a class="reference external" href="https://bitbucket.org/shimizukawa/sphinx-intl/pull-request/9/">this patch</a>
+to sphinx-intl (until merged) to support <em>fuzzy</em> translations</li>
+<li>create an empty database with the connector module installed</li>
+<li><code class="docutils literal"><span class="pre">cd</span> <span class="pre">connector/doc</span></code></li>
+<li>rebuild the gettext .pot source catalogs: <code class="docutils literal"><span class="pre">make</span> <span class="pre">gettext</span></code></li>
+<li>update the .po translation files from the latest .pot files (here for
+language &#8216;fr&#8217;): <code class="docutils literal"><span class="pre">sphinx-intl</span> <span class="pre">update</span> <span class="pre">-l</span> <span class="pre">fr</span> <span class="pre">-p</span> <span class="pre">_build/locale</span></code></li>
+<li>create or edit the translation in the .po files: <code class="docutils literal"><span class="pre">poedit</span>
+<span class="pre">locale/fr/LC_MESSAGES/*.po</span></code></li>
+<li>compile the .po files into .mo files: <code class="docutils literal"><span class="pre">sphinx-intl</span> <span class="pre">build</span></code></li>
+<li>build the translated documentation to html: <code class="docutils literal"><span class="pre">make</span> <span class="pre">SPHINXOPTS=&quot;-Dlanguage=fr&quot;</span>
+<span class="pre">html</span></code></li>
+</ul>
+<p>The same using a <a class="reference external" href="https://bitbucket.org/anybox/public_buildbot_buildouts/src/tip/odoo-connector.cfg">buildout</a>:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ mkdir buildout &amp;&amp; cd buildout
+$ wget https://bitbucket.org/anybox/public_buildbot_buildouts/raw/tip/odoo-connector.cfg -O buildout.cfg
+$ wget https://bitbucket.org/anybox/public_buildbot_buildouts/raw/tip/bootstrap.py
+$ python bootstrap.py
+$ bin/buildout
+$ createdb connectordb
+$ bin/start_openerp -d connectordb --stop-after-init
+$ cd connector/connector/doc/
+$ ../../../bin/sphinx-build -d connectordb -- -b gettext ./ _build/locale/
+$ ../../../bin/sphinx-intl -d connectordb -- update -l fr -p _build/locale/
+$ poedit locale/fr/LC_MESSAGES/*po
+$ ../../../bin/sphinx-intl -d connectordb -- build
+$ ../../../bin/sphinx-build -d connectordb -- -D language=fr -b html ./ _build/html/
+</pre></div>
+</div>
+<p>Then you can see the result in _build/html/ and submit a Pull Request. Repeat the 5 last steps to update the translation if modified upstream.</p>
 </div>
 </div>
 

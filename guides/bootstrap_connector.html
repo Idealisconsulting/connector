@@ -60,7 +60,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../index.html">
-          OpenERP Connector</a>
+          Odoo Connector</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
@@ -79,18 +79,19 @@
       aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../project/contribute.html">Contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../project/contribute.html#want-to-start-a-new-connector">Want to start a new connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/contribute.html#creating-or-maintaining-a-translation-of-this-doc">Creating or maintaining a translation of this doc</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html#financial-contributors">Financial Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#not-released">3.0.0 (not released)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project/changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - warning: breaks compatibility)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/roadmap.html">Roadmap</a></li>
@@ -117,7 +118,7 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Boostrapping a connector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#openerp-manifest">OpenERP Manifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odoo-manifest">Odoo Manifest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#install-the-module-in-the-connector">Install the module in the connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#declare-the-backends">Declare the backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backend-model">Backend Model</a></li>
@@ -164,7 +165,7 @@
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
 <li><a class="reference internal" href="#">Boostrapping a connector</a><ul>
-<li><a class="reference internal" href="#openerp-manifest">OpenERP Manifest</a></li>
+<li><a class="reference internal" href="#odoo-manifest">Odoo Manifest</a></li>
 <li><a class="reference internal" href="#install-the-module-in-the-connector">Install the module in the connector</a></li>
 <li><a class="reference internal" href="#declare-the-backends">Declare the backends</a></li>
 <li><a class="reference internal" href="#backend-model">Backend Model</a></li>
@@ -221,18 +222,18 @@
 <p>Besides that, you may want to use the existing connectors to have some
 real implementation examples:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/OCA/connector-magento">OpenERP Magento Connector</a></li>
-<li><a class="reference external" href="https://github.com/OCA/connector-prestashop">OpenERP Prestashop Connector</a></li>
+<li><a class="reference external" href="https://github.com/OCA/connector-magento">Odoo Magento Connector</a></li>
+<li><a class="reference external" href="https://github.com/OCA/connector-prestashop">Odoo Prestashop Connector</a></li>
 </ul>
 <p>Some boilerplate is necessary, so this document will guide you through
 some steps. Please also take a look on the <a class="reference internal" href="../project/contribute.html#naming-convention"><span>Naming conventions</span></a>.</p>
 <p>For the sake of the example, we&#8217;ll imagine we have to synchronize
-OpenERP with a coffee machine.</p>
-<div class="section" id="openerp-manifest">
-<h2>OpenERP Manifest<a class="headerlink" href="#openerp-manifest" title="Permalink to this headline">¶</a></h2>
-<p>As we want to synchronize OpenERP with a coffee machine, we&#8217;ll name
+Odoo with a coffee machine.</p>
+<div class="section" id="odoo-manifest">
+<h2>Odoo Manifest<a class="headerlink" href="#odoo-manifest" title="Permalink to this headline">¶</a></h2>
+<p>As we want to synchronize Odoo with a coffee machine, we&#8217;ll name
 our connector connector_coffee.</p>
-<p>First, we need to create the OpenERP addons itself, editing the
+<p>First, we need to create the Odoo addons itself, editing the
 <code class="docutils literal"><span class="pre">connector_coffee/__openerp__.py</span></code> manifest.</p>
 <div class="highlight-python"><div class="highlight"><pre> <span class="c"># -*- coding: utf-8 -*-</span>
  <span class="p">{</span><span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">&#39;Coffee Connector&#39;</span><span class="p">,</span>
@@ -246,11 +247,11 @@ our connector connector_coffee.</p>
 <span class="s"> Coffee Connector</span>
 <span class="s"> ================</span>
 
-<span class="s"> Connect OpenERP to my coffee machine.</span>
+<span class="s"> Connect Odoo to my coffee machine.</span>
 
 <span class="s"> Features:</span>
 
-<span class="s"> * Poor a coffee when OpenERP is busy for too long</span>
+<span class="s"> * Poor a coffee when Odoo is busy for too long</span>
 <span class="s"> &quot;&quot;&quot;</span><span class="p">,</span>
   <span class="s">&#39;data&#39;</span><span class="p">:</span> <span class="p">[],</span>
   <span class="s">&#39;installable&#39;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
@@ -285,7 +286,7 @@ be found.</p>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p>The reason for this is that OpenERP may import the Python modules
+<p>The reason for this is that Odoo may import the Python modules
 of uninstalled modules, so it automatically registers the
 events and ConnectorUnit classes, even for uninstalled
 modules.</p>
@@ -430,7 +431,7 @@ created. I propose to create a helper too in
 <p>We&#8217;ll probably need to create synchronizers, mappers, backend adapters,
 binders and maybe our own types of ConnectorUnit classes.</p>
 <p>Their implementation can vary a lot. Have a look on the
-<a class="reference external" href="https://github.com/OCA/connector-magento">OpenERP Magento Connector</a> and <a class="reference external" href="https://github.com/OCA/connector-prestashop">OpenERP Prestashop Connector</a> projects.</p>
+<a class="reference external" href="https://github.com/OCA/connector-magento">Odoo Magento Connector</a> and <a class="reference external" href="https://github.com/OCA/connector-prestashop">Odoo Prestashop Connector</a> projects.</p>
 </div>
 </div>
 

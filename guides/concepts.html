@@ -60,7 +60,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../index.html">
-          OpenERP Connector</a>
+          Odoo Connector</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
@@ -79,18 +79,19 @@
       aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../project/contribute.html">Contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../project/contribute.html#want-to-start-a-new-connector">Want to start a new connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/contribute.html#creating-or-maintaining-a-translation-of-this-doc">Creating or maintaining a translation of this doc</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html#financial-contributors">Financial Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#not-released">3.0.0 (not released)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project/changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - warning: breaks compatibility)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/roadmap.html">Roadmap</a></li>
@@ -117,7 +118,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bootstrap_connector.html">Boostrapping a connector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#openerp-manifest">OpenERP Manifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#odoo-manifest">Odoo Manifest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#install-the-module-in-the-connector">Install the module in the connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#declare-the-backends">Declare the backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#backend-model">Backend Model</a></li>
@@ -226,12 +227,12 @@
 <p>The framework to develop connectors is decoupled in small pieces of
 codes interacting together. Each of them can be used or not in an
 implementation.</p>
-<p>An example of implementation is the <a class="reference external" href="http://www.odoo-magento-connector.com">OpenERP Magento Connector</a>.</p>
+<p>An example of implementation is the <a class="reference external" href="http://www.odoo-magento-connector.com">Odoo Magento Connector</a>.</p>
 <p>This document describes them from a high-level point of view and gives
 pointers to more concrete &#8216;how-to&#8217; or small tutorials.</p>
 <div class="section" id="events">
 <h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
-<p>Events are hooks in OpenERP on which we can plug some actions. They are
+<p>Events are hooks in Odoo on which we can plug some actions. They are
 based on an Observer pattern.</p>
 <p>The basic idea is to declare an <a class="reference internal" href="../api/api_event.html#connector.event.Event" title="connector.event.Event"><code class="xref py py-class docutils literal"><span class="pre">Event</span></code></a>, for
 instance <a class="reference internal" href="../api/api_event.html#connector.event.on_record_create" title="connector.event.on_record_create"><code class="xref py py-class docutils literal"><span class="pre">on_record_create</span></code></a>.
@@ -276,7 +277,7 @@ The worker loads all the jobs assigned to itself in memory in the
 When a worker is dead, it is removed from the database,
 so the jobs are freeed from the worker and can be assigned to another
 one.</p>
-<p>When multiple OpenERP processes are running,
+<p>When multiple Odoo processes are running,
 a worker per process is running, but only those which are <em>CronWorkers</em>
 enqueue and execute jobs, to avoid to clutter the HTTP processes.</p>
 <p>A connectors developer is mostly interested by:</p>
@@ -287,7 +288,7 @@ enqueue and execute jobs, to avoid to clutter the HTTP processes.</p>
 <div class="section" id="session">
 <h2>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h2>
 <p>A <a class="reference internal" href="../api/api_session.html#connector.session.ConnectorSession" title="connector.session.ConnectorSession"><code class="xref py py-class docutils literal"><span class="pre">ConnectorSession</span></code></a> is a container for the usual
-<code class="docutils literal"><span class="pre">cr</span></code>, <code class="docutils literal"><span class="pre">uid</span></code>, <code class="docutils literal"><span class="pre">context</span></code> used in OpenERP. Now, it contains the Odoo
+<code class="docutils literal"><span class="pre">cr</span></code>, <code class="docutils literal"><span class="pre">uid</span></code>, <code class="docutils literal"><span class="pre">context</span></code> used in Odoo. Now, it contains the Odoo
 <code class="docutils literal"><span class="pre">Environment</span></code> as <code class="docutils literal"><span class="pre">self.env</span></code>.
 We use them accross the connectors.</p>
 </div>
@@ -337,7 +338,7 @@ Note that you can define your own ConnectorUnits as well.</p>
 <div class="section" id="mappings">
 <h3>Mappings<a class="headerlink" href="#mappings" title="Permalink to this headline">¶</a></h3>
 <p>The base class is <a class="reference internal" href="../api/api_mapper.html#connector.unit.mapper.Mapper" title="connector.unit.mapper.Mapper"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.mapper.Mapper</span></code></a>.</p>
-<p>A mapping translates an external record to an OpenERP record and
+<p>A mapping translates an external record to an Odoo record and
 conversely.</p>
 <p>It supports:</p>
 <dl class="docutils">
@@ -377,20 +378,20 @@ used by the backend.</p>
 <p>The base class is
 <a class="reference internal" href="../api/api_connector.html#connector.connector.Binder" title="connector.connector.Binder"><code class="xref py py-class docutils literal"><span class="pre">connector.connector.Binder</span></code></a>.</p>
 <p>Binders are classes which know how to find the external ID for an
-OpenERP ID, how to find the OpenERP ID for an external ID and how to
+Odoo ID, how to find the Odoo ID for an external ID and how to
 create the binding between them.</p>
 </div>
 </div>
 <div class="section" id="bindings">
 <span id="binding"></span><h2>Bindings<a class="headerlink" href="#bindings" title="Permalink to this headline">¶</a></h2>
-<p>Here a binding means the link of a record between OpenERP and a backend.</p>
+<p>Here a binding means the link of a record between Odoo and a backend.</p>
 <p>The proposed implementation for the connectors widely use the
 <cite>_inherits</cite> capabilities.</p>
 <p>Say we import a customer from <em>Magento</em>.</p>
 <p>We create a <cite>magento.res.partner</cite> model, which <cite>_inherits</cite>
 <cite>res.partner</cite>.</p>
 <p>This model, called a <em>binding</em> model, knows the ID of the partner in
-OpenERP, the ID in Magento and the relation to the backend model.</p>
+Odoo, the ID in Magento and the relation to the backend model.</p>
 <p>It also stores all the necessary metadata related to this customer
 coming from Magento.</p>
 </div>

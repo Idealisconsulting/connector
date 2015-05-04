@@ -60,7 +60,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../index.html">
-          OpenERP Connector</a>
+          Odoo Connector</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
@@ -79,18 +79,19 @@
       aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../project/contribute.html">Contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../project/contribute.html#want-to-start-a-new-connector">Want to start a new connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/contribute.html#creating-or-maintaining-a-translation-of-this-doc">Creating or maintaining a translation of this doc</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html#financial-contributors">Financial Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#not-released">3.0.0 (not released)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project/changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - warning: breaks compatibility)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/roadmap.html">Roadmap</a></li>
@@ -117,7 +118,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="bootstrap_connector.html">Boostrapping a connector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#openerp-manifest">OpenERP Manifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#odoo-manifest">Odoo Manifest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#install-the-module-in-the-connector">Install the module in the connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#declare-the-backends">Declare the backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#backend-model">Backend Model</a></li>
@@ -236,7 +237,7 @@ hierarchy of backends.</p>
 </div>
 <div class="section" id="bindings">
 <h2>Bindings<a class="headerlink" href="#bindings" title="Permalink to this headline">¶</a></h2>
-<p>The <code class="docutils literal"><span class="pre">binding</span></code> is the link between an OpenERP record and an external
+<p>The <code class="docutils literal"><span class="pre">binding</span></code> is the link between an Odoo record and an external
 record. There is no forced implementation for the <code class="docutils literal"><span class="pre">bindings</span></code>. The most
 straightforward techniques are: storing the external ID in the same
 model (<code class="docutils literal"><span class="pre">account.invoice</span></code>), in a new link model or in a new link model
@@ -322,11 +323,11 @@ The main types of <a class="reference internal" href="../api/api_connector.html#
 (the implementation of theses classes belongs to the connectors):</p>
 <p><a class="reference internal" href="../api/api_connector.html#connector.connector.Binder" title="connector.connector.Binder"><code class="xref py py-class docutils literal"><span class="pre">Binder</span></code></a></p>
 <blockquote>
-<div>The <code class="docutils literal"><span class="pre">binders</span></code> give the external ID or OpenERP ID from respectively an
-OpenERP ID or an external ID.</div></blockquote>
+<div>The <code class="docutils literal"><span class="pre">binders</span></code> give the external ID or Odoo ID from respectively an
+Odoo ID or an external ID.</div></blockquote>
 <p><a class="reference internal" href="../api/api_mapper.html#connector.unit.mapper.Mapper" title="connector.unit.mapper.Mapper"><code class="xref py py-class docutils literal"><span class="pre">Mapper</span></code></a></p>
 <blockquote>
-<div>The <code class="docutils literal"><span class="pre">mappers</span></code> transform a external record into an OpenERP record or
+<div>The <code class="docutils literal"><span class="pre">mappers</span></code> transform a external record into an Odoo record or
 conversely.</div></blockquote>
 <p><a class="reference internal" href="../api/api_backend_adapter.html#connector.unit.backend_adapter.BackendAdapter" title="connector.unit.backend_adapter.BackendAdapter"><code class="xref py py-class docutils literal"><span class="pre">BackendAdapter</span></code></a></p>
 <blockquote>

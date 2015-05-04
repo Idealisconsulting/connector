@@ -59,7 +59,7 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="../../index.html">
-          OpenERP Connector</a>
+          Odoo Connector</a>
         <span class="navbar-text navbar-version pull-left"><b></b></span>
       </div>
 
@@ -78,18 +78,19 @@
       aria-labelledby="dLabelGlobalToc"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../../project/contribute.html">Contribute</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../project/contribute.html#want-to-start-a-new-connector">Want to start a new connector</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/contribute.html#creating-or-maintaining-a-translation-of-this-doc">Creating or maintaining a translation of this doc</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../project/contributors.html">Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../project/contributors.html#financial-contributors">Financial Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../project/license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../project/changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#not-released">3.0.0 (not released)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id2">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id3">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id2">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id3">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id4">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - warning: breaks compatibility)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id4">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id5">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id5">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../project/changes.html#id6">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../project/roadmap.html">Roadmap</a></li>
@@ -116,7 +117,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../guides/bootstrap_connector.html">Boostrapping a connector</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../guides/bootstrap_connector.html#openerp-manifest">OpenERP Manifest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/bootstrap_connector.html#odoo-manifest">Odoo Manifest</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/bootstrap_connector.html#install-the-module-in-the-connector">Install the module in the connector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/bootstrap_connector.html#declare-the-backends">Declare the backends</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../guides/bootstrap_connector.html#backend-model">Backend Model</a></li>
@@ -233,7 +234,7 @@
 <span class="sd">    * session</span>
 <span class="sd">    * model_name</span>
 
-<span class="sd">    Then to subscribe one or more consumers, a consumer is a function::</span>
+<span class="sd">    Then to subscribe one or more consumers, an event has a function::</span>
 
 <span class="sd">        def do_something(session, model_name, a, b):</span>
 <span class="sd">            print &quot;Event was fired with arguments: %s, %s&quot; % (a, b)</span>
@@ -249,7 +250,7 @@
 <span class="sd">        on_my_event.subscribe(do_something_product,</span>
 <span class="sd">                              model_names=&#39;product.product&#39;)</span>
 
-<span class="sd">    We can also replace an event::</span>
+<span class="sd">    We can also replace a consumer::</span>
 
 <span class="sd">        def do_something_product2(session, model_name, a, b):</span>
 <span class="sd">            print &quot;Consumer 2&quot;</span>
