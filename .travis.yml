@@ -20,6 +20,7 @@ env:
   - VERSION="8.0" DOCS="1" LINT_CHECK="0"
   global:
     secure: "lazdZGpkqFTQiu44grYAqKcaGh0cVTBlrHcBxxs43K/OH4Uc2AjMBty83zKc0ZgzizrNOsfK3Z3UHLmTNI92Vi3PtgGzA9dUmiReGO6QcE9P31Geg4pN/1Fwosv6aSpG3hejJJ8ZYpMbEPJkZyjTVpdM2r1VEcqEvFQ2xR5bEUg="
+    secure: "LOTy5vySx9VQyCq1Fs/sqSy6xNzNk0vN5YoFIA1dkoX44ME11kWCcirjPk2+eMwNNHSwScImZU88ozdjOaQCkHqSTmhr932VQl7DJNhYanGX7KCngwJ/mAgpfYZzhmxFjLjV7c8YfURQWKvKcln7Oee03+Xqe2SgC/1vxRkBMdQ="
 
 install:
   - git clone https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
