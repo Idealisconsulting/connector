@@ -144,6 +144,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/jobrunner.html">Configuring channels and the job runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#what-s-is-the-job-runner">What&#8217;s is the job runner?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-does-it-work">How does it work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-to-use-it">How to use it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#caveat">Caveat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#notes">Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#what-is-a-channel">What is a channel?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-to-configure-channels">How to configure Channels?</a></li>
 </ul>
@@ -154,22 +159,32 @@
 <li class="toctree-l1"><a class="reference internal" href="api_connector.html">Connecteur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_session.html">Session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_backend.html#backend-models">Modèles du backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_backend.html#module-connector.backend_model">Modèles du backend</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_event.html">Événement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_binder.html">Binder (Liant)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mappeur</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mappeur</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_mapper.html#mappers">Mappeurs</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api_synchronizer.html">Synchroniseur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_backend_adapter.html">Adaptateur de backend</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_queue.html">Queue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#job">Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#worker">Worker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id1">Queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#models">Modèles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.job">Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.worker">Worker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id5">Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.model">Modèles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_exception.html">Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_channels.html">Channels</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Job Runner</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Job Runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-s-is-the-job-runner">What&#8217;s is the job runner?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-use-it">How to use it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caveat">Caveat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -183,7 +198,14 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Job Runner</a></li>
+<li><a class="reference internal" href="#">Job Runner</a><ul>
+<li><a class="reference internal" href="#what-s-is-the-job-runner">What&#8217;s is the job runner?</a></li>
+<li><a class="reference internal" href="#how-does-it-work">How does it work?</a></li>
+<li><a class="reference internal" href="#how-to-use-it">How to use it?</a></li>
+<li><a class="reference internal" href="#caveat">Caveat</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -226,6 +248,124 @@
 <h1>Job Runner<a class="headerlink" href="#job-runner" title="Lien permanent vers ce titre">¶</a></h1>
 <p>This is the API documentation for the job runner.</p>
 <p>These classes are not intended for use by module developers.</p>
+<span class="target" id="module-connector.jobrunner.runner"></span><div class="section" id="what-s-is-the-job-runner">
+<h2>What&#8217;s is the job runner?<a class="headerlink" href="#what-s-is-the-job-runner" title="Lien permanent vers ce titre">¶</a></h2>
+<p>This is an alternative to connector workers, with the goal
+of resolving issues due to the polling nature of workers:</p>
+<ul class="simple">
+<li>jobs do not start immediately even if there is a free connector worker,</li>
+<li>connector workers may starve while other workers have too many jobs enqueued,</li>
+<li>connector workers require another startup script,
+making deployment more difficult</li>
+</ul>
+<p>It is fully compatible with the connector mechanism and only
+replaces workers.</p>
+</div>
+<div class="section" id="how-does-it-work">
+<h2>How does it work?<a class="headerlink" href="#how-does-it-work" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>It starts as a thread in the Odoo main process</li>
+<li>It receives postgres NOTIFY messages each time jobs are
+added or updated in the queue_job table.</li>
+<li>It maintains an in-memory priority queue of jobs that
+is populated from the queue_job tables in all databases.</li>
+<li>It does not run jobs itself, but asks Odoo to run them through an
+anonymous /connector/runjob HTTP request [1].</li>
+</ul>
+</div>
+<div class="section" id="how-to-use-it">
+<h2>How to use it?<a class="headerlink" href="#how-to-use-it" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>Set the following environment variables:<ul>
+<li>ODOO_CONNECTOR_CHANNELS=root:4 (or any other channels configuration)</li>
+<li>optional if xmlrpc_port is not set: ODOO_CONNECTOR_PORT=8069</li>
+</ul>
+</li>
+<li>Start Odoo with &#8211;load=web,connector and &#8211;workers &gt; 1. [2]</li>
+<li>Disable then &#8220;Enqueue Jobs&#8221; cron.</li>
+<li>Do NOT start openerp-connector-worker.</li>
+<li>Create jobs (eg using base_import_async) and observe they
+start immediately and in parallel.</li>
+</ul>
+</div>
+<div class="section" id="caveat">
+<h2>Caveat<a class="headerlink" href="#caveat" title="Lien permanent vers ce titre">¶</a></h2>
+<ul class="simple">
+<li>After creating a new database or installing connector on an
+existing database, Odoo must be restarted for the runner to detect it.</li>
+</ul>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Lien permanent vers ce titre">¶</a></h2>
+<dl class="docutils">
+<dt>[1] From a security standpoint, it is safe to have an anonymous HTTP</dt>
+<dd>request because this request only accepts to run jobs that are
+enqueued.</dd>
+<dt>[2] It works with the threaded Odoo server too, although this is</dt>
+<dd>obviously not for production purposes.</dd>
+</dl>
+<dl class="class">
+<dt id="connector.jobrunner.runner.ConnectorRunner">
+<em class="property">class </em><code class="descclassname">connector.jobrunner.runner.</code><code class="descname">ConnectorRunner</code><span class="sig-paren">(</span><em>port=8069</em>, <em>channel_config_string='root:1'</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#ConnectorRunner"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.ConnectorRunner" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Bases : <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(disponible dans Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<blockquote>
+<div><dl class="method">
+<dt id="connector.jobrunner.runner.ConnectorRunner.get_db_names">
+<code class="descclassname">ConnectorRunner.</code><code class="descname">get_db_names</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#ConnectorRunner.get_db_names"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.ConnectorRunner.get_db_names" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connector.jobrunner.runner.ConnectorRunner.initialize_databases">
+<code class="descclassname">ConnectorRunner.</code><code class="descname">initialize_databases</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#ConnectorRunner.initialize_databases"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.ConnectorRunner.initialize_databases" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connector.jobrunner.runner.ConnectorRunner.process_notifications">
+<code class="descclassname">ConnectorRunner.</code><code class="descname">process_notifications</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#ConnectorRunner.process_notifications"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.ConnectorRunner.process_notifications" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connector.jobrunner.runner.ConnectorRunner.run_forever">
+<code class="descclassname">ConnectorRunner.</code><code class="descname">run_forever</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#ConnectorRunner.run_forever"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.ConnectorRunner.run_forever" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connector.jobrunner.runner.ConnectorRunner.run_jobs">
+<code class="descclassname">ConnectorRunner.</code><code class="descname">run_jobs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#ConnectorRunner.run_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.ConnectorRunner.run_jobs" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connector.jobrunner.runner.ConnectorRunner.wait_notification">
+<code class="descclassname">ConnectorRunner.</code><code class="descname">wait_notification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#ConnectorRunner.wait_notification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.ConnectorRunner.wait_notification" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+<dl class="class">
+<dt id="connector.jobrunner.runner.Database">
+<em class="property">class </em><code class="descclassname">connector.jobrunner.runner.</code><code class="descname">Database</code><span class="sig-paren">(</span><em>db_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#Database"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.Database" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Bases : <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(disponible dans Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<blockquote>
+<div><dl class="method">
+<dt id="connector.jobrunner.runner.Database.close">
+<code class="descclassname">Database.</code><code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#Database.close"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.Database.close" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connector.jobrunner.runner.Database.select_jobs">
+<code class="descclassname">Database.</code><code class="descname">select_jobs</code><span class="sig-paren">(</span><em>where</em>, <em>args</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#Database.select_jobs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.Database.select_jobs" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="connector.jobrunner.runner.Database.set_job_enqueued">
+<code class="descclassname">Database.</code><code class="descname">set_job_enqueued</code><span class="sig-paren">(</span><em>uuid</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/jobrunner/runner.html#Database.set_job_enqueued"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.jobrunner.runner.Database.set_job_enqueued" title="Lien permanent vers cette définition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</div>
 </div>
 
 

@@ -144,6 +144,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../guides/jobrunner.html">Configuring channels and the job runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#what-s-is-the-job-runner">What&#8217;s is the job runner?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-does-it-work">How does it work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-to-use-it">How to use it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#caveat">Caveat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#notes">Notes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#what-is-a-channel">What is a channel?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-to-configure-channels">How to configure Channels?</a></li>
 </ul>
@@ -154,22 +159,32 @@
 <li class="toctree-l1"><a class="reference internal" href="api_connector.html">Connector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_session.html">Session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_backend.html#backend-models">Backend Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_backend.html#module-connector.backend_model">Backend Models</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_binder.html">Binder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mapper</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_mapper.html#mappers">Mappers</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="api_synchronizer.html">Synchronizer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_backend_adapter.html">Backend Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_queue.html">Queue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#job">Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#worker">Worker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id1">Queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.job">Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.worker">Worker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id5">Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.model">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_exception.html">Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_channels.html">Channels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_runner.html">Job Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_runner.html">Job Runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api_runner.html#what-s-is-the-job-runner">What&#8217;s is the job runner?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_runner.html#how-does-it-work">How does it work?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_runner.html#how-to-use-it">How to use it?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_runner.html#caveat">Caveat</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_runner.html#notes">Notes</a></li>
+</ul>
+</li>
 </ul>
 </ul>
 </li>
@@ -226,8 +241,180 @@
   <div class="row">
     <div class="col-md-12">
       
-  <div class="section" id="event">
-<h1>Event<a class="headerlink" href="#event" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="module-connector.event">
+<span id="event"></span><h1>Event<a class="headerlink" href="#module-connector.event" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="connector.event.Event">
+<em class="property">class </em><code class="descclassname">connector.event.</code><code class="descname">Event</code><a class="reference internal" href="../_modules/connector/event.html#Event"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.event.Event" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="http://docs.python.org/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>An event contains consumers called when the event is fired.</p>
+<p>The events are able to filter the consumers to execute by model name.</p>
+<p>The usage of an event is to instantiate an <cite>Event</cite> object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">on_my_event</span> <span class="o">=</span> <span class="n">Event</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>An event always have at least the 2 following arguments:</p>
+<ul class="simple">
+<li>session</li>
+<li>model_name</li>
+</ul>
+<p>Then to subscribe one or more consumers, an event has a function:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">do_something</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;Event was fired with arguments: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+
+<span class="c"># active on all models</span>
+<span class="n">on_my_event</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">do_something</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">do_something_product</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Event was fired on a product &quot;</span>
+           <span class="s">&quot;with arguments: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="c"># active only on product.product</span>
+<span class="n">on_my_event</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">do_something_product</span><span class="p">,</span>
+                      <span class="n">model_names</span><span class="o">=</span><span class="s">&#39;product.product&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We can also replace a consumer:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">def</span> <span class="nf">do_something_product2</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&quot;Consumer 2&quot;</span>
+    <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Event was fired on a product &quot;</span>
+          <span class="s">&quot;with arguments: </span><span class="si">%s</span><span class="s">, </span><span class="si">%s</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">))</span>
+
+<span class="n">on_my_event</span><span class="o">.</span><span class="n">subscribe</span><span class="p">(</span><span class="n">do_something_product2</span><span class="p">,</span>
+                      <span class="n">replacing</span><span class="o">=</span><span class="n">do_something_product</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally, we fire the event:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">on_my_event</span><span class="o">.</span><span class="n">fire</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="s">&#39;res.users&#39;</span><span class="p">,</span> <span class="s">&#39;value_a&#39;</span><span class="p">,</span> <span class="s">&#39;value_b&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>A consumer can be subscribed using a decorator:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="nd">@on_my_event</span>
+<span class="k">def</span> <span class="nf">do_other_thing</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;foo&#39;</span>
+
+<span class="nd">@on_my_event</span><span class="p">(</span><span class="n">replacing</span><span class="o">=</span><span class="n">do_other_thing</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">print_bar</span><span class="p">(</span><span class="n">session</span><span class="p">,</span> <span class="n">model_name</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">print</span> <span class="s">&#39;bar&#39;</span>
+</pre></div>
+</div>
+<dl class="method">
+<dt id="connector.event.Event.fire">
+<code class="descname">fire</code><span class="sig-paren">(</span><em>session</em>, <em>model_name</em>, <em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/event.html#Event.fire"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.event.Event.fire" title="Permalink to this definition">¶</a></dt>
+<dd><p>Call each consumer subscribed on the event with the given
+arguments and keyword arguments.</p>
+<p>All the consumers which were subscribed globally (no model name) or
+which are subscribed on the same model</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>session</strong> (<code class="xref py py-class docutils literal"><span class="pre">connector.session.Session</span></code>) &#8211; current session</li>
+<li><strong>model_name</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><em>str</em></a>) &#8211; name of the model</li>
+<li><strong>args</strong> &#8211; arguments propagated to the consumer
+The second argument of <cite>args</cite> is the model name.
+The first argument is the session.</li>
+<li><strong>kwargs</strong> &#8211; keyword arguments propagated to the consumer</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="connector.event.Event.has_consumer_for">
+<code class="descname">has_consumer_for</code><span class="sig-paren">(</span><em>session</em>, <em>model_name</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/event.html#Event.has_consumer_for"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.event.Event.has_consumer_for" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return True if at least one consumer is registered
+for the model.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="connector.event.Event.subscribe">
+<code class="descname">subscribe</code><span class="sig-paren">(</span><em>consumer</em>, <em>model_names=None</em>, <em>replacing=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/event.html#Event.subscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.event.Event.subscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subscribe a consumer on the event</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>consumer</strong> &#8211; the function to register on the event</li>
+<li><strong>model_names</strong> &#8211; the consumer will be active only on these models,
+active on all models if <code class="docutils literal"><span class="pre">None</span></code></li>
+<li><strong>replacing</strong> &#8211; the function beeing replaced by this new one.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="connector.event.Event.unsubscribe">
+<code class="descname">unsubscribe</code><span class="sig-paren">(</span><em>consumer</em>, <em>model_names=None</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/event.html#Event.unsubscribe"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.event.Event.unsubscribe" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a consumer from the event</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>consumer</strong> &#8211; the function to unsubscribe</li>
+<li><strong>model_names</strong> &#8211; remove only for these models or remove a
+consumer which is active on all models if <code class="docutils literal"><span class="pre">None</span></code>.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="data">
+<dt id="connector.event.on_record_create">
+<code class="descclassname">connector.event.</code><code class="descname">on_record_create</code><em class="property"> = &lt;connector.event.Event object at 0x5d6e710&gt;</em><a class="headerlink" href="#connector.event.on_record_create" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">on_record_create</span></code> is fired when one record has been created.</p>
+<p>Listeners should take the following arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>session: <a class="reference internal" href="api_session.html#connector.session.ConnectorSession" title="connector.session.ConnectorSession"><code class="xref py py-class docutils literal"><span class="pre">ConnectorSession</span></code></a> object</li>
+<li>model_name: name of the model</li>
+<li>record_id: id of the created record</li>
+<li>vals:  field values updated, e.g {&#8216;field_name&#8217;: field_value, ...}</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="data">
+<dt id="connector.event.on_record_unlink">
+<code class="descclassname">connector.event.</code><code class="descname">on_record_unlink</code><em class="property"> = &lt;connector.event.Event object at 0x5d6e750&gt;</em><a class="headerlink" href="#connector.event.on_record_unlink" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">on_record_unlink</span></code> is fired when one record has been deleted.</p>
+<p>Listeners should take the following arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>session: <a class="reference internal" href="api_session.html#connector.session.ConnectorSession" title="connector.session.ConnectorSession"><code class="xref py py-class docutils literal"><span class="pre">ConnectorSession</span></code></a> object</li>
+<li>model_name: name of the model</li>
+<li>record_id: id of the record</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
+<dl class="data">
+<dt id="connector.event.on_record_write">
+<code class="descclassname">connector.event.</code><code class="descname">on_record_write</code><em class="property"> = &lt;connector.event.Event object at 0x5d6e690&gt;</em><a class="headerlink" href="#connector.event.on_record_write" title="Permalink to this definition">¶</a></dt>
+<dd><p><code class="docutils literal"><span class="pre">on_record_write</span></code> is fired when one record has been updated.</p>
+<p>Listeners should take the following arguments:</p>
+<blockquote>
+<div><ul class="simple">
+<li>session: <a class="reference internal" href="api_session.html#connector.session.ConnectorSession" title="connector.session.ConnectorSession"><code class="xref py py-class docutils literal"><span class="pre">ConnectorSession</span></code></a> object</li>
+<li>model_name: name of the model</li>
+<li>record_id: id of the record</li>
+<li>vals:  field values of the new record, e.g {&#8216;field_name&#8217;: field_value, ...}</li>
+</ul>
+</div></blockquote>
+</dd></dl>
+
 </div>
 
 
