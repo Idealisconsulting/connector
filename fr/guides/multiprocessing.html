@@ -5,11 +5,11 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Connecteur et multiprocessing &mdash; documentation Connector </title>
+    <title>Use the connector with multiprocessing workers &mdash; documentation Connector </title>
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,11 +27,11 @@
     <script type="text/javascript" src="../_static/translations.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="documentation Connector " href="../index.html" />
     <link rel="next" title="Connecteur" href="../api/api_connector.html" />
-    <link rel="prev" title="Amorcer la création un nouveau connecteur" href="bootstrap_connector.html" />
+    <link rel="prev" title="Configuring channels and the job runner" href="jobrunner.html" />
 
 <meta charset='utf-8'>
 <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
@@ -101,12 +101,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html#financial-contributors">Contributeurs financiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/license.html">Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/changes.html">Changements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.0.0 (2015-04-01)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.1.0 (2015-05-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project/changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - attention : rupture de compatibilité)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id7">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/roadmap.html">Roadmap</a></li>
@@ -143,29 +144,33 @@
 <li class="toctree-l2"><a class="reference internal" href="bootstrap_connector.html#connectorunit-classes">Classes ConnectorUnit</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">Connecteur et multiprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="jobrunner.html">Configuring channels and the job runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jobrunner.html#what-is-a-channel">What is a channel?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jobrunner.html#how-to-configure-channels">How to configure Channels?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Use the connector with multiprocessing workers</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_connector.html">Connecteur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_session.html">Session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/api_backend.html#module-connector.backend_model">Modèles du backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api_backend.html#backend-models">Modèles du backend</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_event.html">Événement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_binder.html">Binder (Liant)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../api/api_mapper.html">Mappeur</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../api/api_mapper.html#mappers">Mappeurs</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api_mapper.html">Mappeur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_synchronizer.html">Synchroniseur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_backend_adapter.html">Adaptateur de backend</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_queue.html">Queue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#module-connector.queue.job">Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#module-connector.queue.worker">Worker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#id5">Queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#module-connector.queue.model">Modèles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#job">Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#worker">Worker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#id1">Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/api_queue.html#models">Modèles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../api/api_exception.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api_channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api/api_runner.html">Job Runner</a></li>
 </ul>
 </ul>
 </li>
@@ -179,7 +184,7 @@
   <ul class="dropdown-menu localtoc"
       role="menu"
       aria-labelledby="dLabelLocalToc"><ul>
-<li><a class="reference internal" href="#">Connecteur et multiprocessing</a></li>
+<li><a class="reference internal" href="#">Use the connector with multiprocessing workers</a></li>
 </ul>
 </ul>
 </li>
@@ -190,7 +195,7 @@
               
                 
   <li>
-    <a href="bootstrap_connector.html" title="Previous Chapter: Amorcer la création un nouveau connecteur"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Amorcer la créat...</span>
+    <a href="jobrunner.html" title="Previous Chapter: Configuring channels and the job runner"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm hidden-tablet">&laquo; Configuring chan...</span>
     </a>
   </li>
   <li>
@@ -222,20 +227,23 @@
   <div class="row">
     <div class="col-md-12">
       
-  <div class="section" id="use-the-connector-with-multiprocessing">
-<span id="multiprocessing"></span><h1>Connecteur et multiprocessing<a class="headerlink" href="#use-the-connector-with-multiprocessing" title="Lien permanent vers ce titre">¶</a></h1>
-<p>When Odoo is launched with 1 process, the jobs worker will run
-threaded in the same process.</p>
-<p>When Odoo is launched with multiple processes using the option
-<code class="docutils literal"><span class="pre">--workers</span></code>, the jobs workers are not independant processes, however,
-you have to launch them separately with the script
-<code class="docutils literal"><span class="pre">openerp-connector-worker</span></code> located in the connector module.</p>
-<p>It takes the same arguments and configuration file than the Odoo
-server.</p>
+  <div class="section" id="use-the-connector-with-multiprocessing-workers">
+<span id="multiprocessing"></span><h1>Use the connector with multiprocessing workers<a class="headerlink" href="#use-the-connector-with-multiprocessing-workers" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In a future version, workers will be deprecated
+in favor of the newer job runner which is more efficient and
+supports job channels. You should try the job runner first
+and fall back to using workers in case the runner does not
+work (sic) for you, in which case we will very much appreciate
+a github issue describing the problems you encountered.</p>
+</div>
+<p>Quand Odoo est lancé avec un seul processus, le worker de jobs fonctionne dans un thread.</p>
+<p>Quand Odoo est lancé en multi-processus grâce à l&#8217;option <code class="docutils literal"><span class="pre">--workers</span></code>, les workers de jobs ne sont pas des processus indépendants, mais vous devez les lancer séparément avec le script <code class="docutils literal"><span class="pre">openerp-connector-worker</span></code> situé dans le module <cite>connector</cite>.</p>
+<p>Il prend les mêmes arguments et fichier de configuration que le serveur Odoo.</p>
 <div class="admonition important">
 <p class="first admonition-title">Important</p>
-<p class="last">The Python path must contain the path to the Odoo
-server when <code class="docutils literal"><span class="pre">openerp-connector-worker</span></code> is launched.</p>
+<p class="last">Le <cite>path</cite> de Python doit contenir le chemin vers le serveur Odoo quand <code class="docutils literal"><span class="pre">openerp-connector-worker</span></code> est lancé.</p>
 </div>
 <p>Exemple</p>
 <div class="highlight-python"><div class="highlight"><pre>$ PYTHONPATH=/path/to/server connector/openerp-connector-worker --config /path/to/configfile \
@@ -245,9 +253,7 @@ server when <code class="docutils literal"><span class="pre">openerp-connector-w
 <p>L&#8217;action planifiée &#8216;Enqueue Jobs&#8217; est inutile en mode multi-processus.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">The <code class="docutils literal"><span class="pre">openerp-connector-worker</span></code> should not be launched
-alongside Odoo when the latter does not run in multiprocess
-mode, because the interprocess signaling would not be done.</p>
+<p class="last">Le script <code class="docutils literal"><span class="pre">openerp-connector-worker</span></code> ne doit pas être lancé avec Odoo quand ce dernier ne fonctionne pas en multi-processus, parce que les signaux inter-processus ne seraient pas transmis.</p>
 </div>
 <div class="admonition hint">
 <p class="first admonition-title">Indice</p>
@@ -275,7 +281,7 @@ mode, because the interprocess signaling would not be done.</p>
     </p>
     <p>
         &copy; Copyright 2013, Camptocamp SA.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.<br/>
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
     </p>
   </div>
 </footer>

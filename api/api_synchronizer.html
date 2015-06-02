@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -26,7 +26,7 @@
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="Connector  documentation" href="../index.html" />
     <link rel="next" title="Backend Adapter" href="api_backend_adapter.html" />
@@ -100,12 +100,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html#financial-contributors">Financial Contributors</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/license.html">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/changes.html">Changes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.0.0 (2015-04-01)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.1.0 (2015-05-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project/changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - warning: breaks compatibility)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id7">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/roadmap.html">Roadmap</a></li>
@@ -142,29 +143,33 @@
 <li class="toctree-l2"><a class="reference internal" href="../guides/bootstrap_connector.html#connectorunit-classes">ConnectorUnit classes</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/multiprocessing.html">Use the connector with multiprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/jobrunner.html">Configuring channels and the job runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#what-is-a-channel">What is a channel?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-to-configure-channels">How to configure Channels?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/multiprocessing.html">Use the connector with multiprocessing workers</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="api_connector.html">Connector</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_session.html">Session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_backend.html#module-connector.backend_model">Backend Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_backend.html#backend-models">Backend Models</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_event.html">Event</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_binder.html">Binder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mapper</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_mapper.html#mappers">Mappers</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mapper</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Synchronizer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_backend_adapter.html">Backend Adapter</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_queue.html">Queue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.job">Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.worker">Worker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id5">Queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.model">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#job">Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#worker">Worker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id1">Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#models">Models</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_exception.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_runner.html">Job Runner</a></li>
 </ul>
 </ul>
 </li>
@@ -221,109 +226,8 @@
   <div class="row">
     <div class="col-md-12">
       
-  <div class="section" id="module-connector.unit.synchronizer">
-<span id="synchronizer"></span><h1>Synchronizer<a class="headerlink" href="#module-connector.unit.synchronizer" title="Permalink to this headline">¶</a></h1>
-<dl class="attribute">
-<dt id="connector.unit.synchronizer.DeleteSynchronizer">
-<code class="descclassname">connector.unit.synchronizer.</code><code class="descname">DeleteSynchronizer</code><a class="headerlink" href="#connector.unit.synchronizer.DeleteSynchronizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#connector.unit.synchronizer.Deleter" title="connector.unit.synchronizer.Deleter"><code class="xref py py-class docutils literal"><span class="pre">Deleter</span></code></a></p>
-</dd></dl>
-
-<dl class="class">
-<dt id="connector.unit.synchronizer.Deleter">
-<em class="property">class </em><code class="descclassname">connector.unit.synchronizer.</code><code class="descname">Deleter</code><span class="sig-paren">(</span><em>connector_env</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/synchronizer.html#Deleter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.synchronizer.Deleter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#connector.unit.synchronizer.Synchronizer" title="connector.unit.synchronizer.Synchronizer"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.synchronizer.Synchronizer</span></code></a></p>
-<p>Synchronizer for deleting a record on the backend</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="connector.unit.synchronizer.ExportSynchronizer">
-<code class="descclassname">connector.unit.synchronizer.</code><code class="descname">ExportSynchronizer</code><a class="headerlink" href="#connector.unit.synchronizer.ExportSynchronizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#connector.unit.synchronizer.Exporter" title="connector.unit.synchronizer.Exporter"><code class="xref py py-class docutils literal"><span class="pre">Exporter</span></code></a></p>
-</dd></dl>
-
-<dl class="class">
-<dt id="connector.unit.synchronizer.Exporter">
-<em class="property">class </em><code class="descclassname">connector.unit.synchronizer.</code><code class="descname">Exporter</code><span class="sig-paren">(</span><em>connector_env</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/synchronizer.html#Exporter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.synchronizer.Exporter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#connector.unit.synchronizer.Synchronizer" title="connector.unit.synchronizer.Synchronizer"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.synchronizer.Synchronizer</span></code></a></p>
-<p>Synchronizer for exporting data from OpenERP to a backend</p>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="connector.unit.synchronizer.ImportSynchronizer">
-<code class="descclassname">connector.unit.synchronizer.</code><code class="descname">ImportSynchronizer</code><a class="headerlink" href="#connector.unit.synchronizer.ImportSynchronizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <a class="reference internal" href="#connector.unit.synchronizer.Importer" title="connector.unit.synchronizer.Importer"><code class="xref py py-class docutils literal"><span class="pre">Importer</span></code></a></p>
-</dd></dl>
-
-<dl class="class">
-<dt id="connector.unit.synchronizer.Importer">
-<em class="property">class </em><code class="descclassname">connector.unit.synchronizer.</code><code class="descname">Importer</code><span class="sig-paren">(</span><em>connector_env</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/synchronizer.html#Importer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.synchronizer.Importer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#connector.unit.synchronizer.Synchronizer" title="connector.unit.synchronizer.Synchronizer"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.synchronizer.Synchronizer</span></code></a></p>
-<p>Synchronizer for importing data from a backend to OpenERP</p>
-</dd></dl>
-
-<dl class="class">
-<dt id="connector.unit.synchronizer.Synchronizer">
-<em class="property">class </em><code class="descclassname">connector.unit.synchronizer.</code><code class="descname">Synchronizer</code><span class="sig-paren">(</span><em>connector_env</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/synchronizer.html#Synchronizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.synchronizer.Synchronizer" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="api_connector.html#connector.connector.ConnectorUnit" title="connector.connector.ConnectorUnit"><code class="xref py py-class docutils literal"><span class="pre">connector.connector.ConnectorUnit</span></code></a></p>
-<p>Base class for synchronizers</p>
-<dl class="attribute">
-<dt id="connector.unit.synchronizer.Synchronizer.backend_adapter">
-<code class="descname">backend_adapter</code><a class="headerlink" href="#connector.unit.synchronizer.Synchronizer.backend_adapter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an instance of <code class="docutils literal"><span class="pre">BackendAdapter</span></code> for the
-synchronization.</p>
-<p>The instanciation is delayed because some synchronisations do
-not need such an unit and the unit may not exist.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="api_backend_adapter.html#connector.unit.backend_adapter.BackendAdapter" title="connector.unit.backend_adapter.BackendAdapter"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.backend_adapter.BackendAdapter</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="connector.unit.synchronizer.Synchronizer.binder">
-<code class="descname">binder</code><a class="headerlink" href="#connector.unit.synchronizer.Synchronizer.binder" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an instance of <code class="docutils literal"><span class="pre">Binder</span></code> for the synchronization.</p>
-<p>The instanciation is delayed because some synchronisations do
-not need such an unit and the unit may not exist.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.binder.Binder</span></code></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="attribute">
-<dt id="connector.unit.synchronizer.Synchronizer.mapper">
-<code class="descname">mapper</code><a class="headerlink" href="#connector.unit.synchronizer.Synchronizer.mapper" title="Permalink to this definition">¶</a></dt>
-<dd><p>Return an instance of <code class="docutils literal"><span class="pre">Mapper</span></code> for the synchronization.</p>
-<p>The instanciation is delayed because some synchronisations do
-not need such an unit and the unit may not exist.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="api_mapper.html#connector.unit.mapper.Mapper" title="connector.unit.mapper.Mapper"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.mapper.Mapper</span></code></a></td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="connector.unit.synchronizer.Synchronizer.run">
-<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/synchronizer.html#Synchronizer.run"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.synchronizer.Synchronizer.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run the synchronization</p>
-</dd></dl>
-
-</dd></dl>
-
+  <div class="section" id="synchronizer">
+<h1>Synchronizer<a class="headerlink" href="#synchronizer" title="Permalink to this headline">¶</a></h1>
 </div>
 
 
@@ -346,7 +250,7 @@ not need such an unit and the unit may not exist.</p>
     </p>
     <p>
         &copy; Copyright 2013, Camptocamp SA.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.<br/>
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
     </p>
   </div>
 </footer>

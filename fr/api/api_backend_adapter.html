@@ -9,7 +9,7 @@
     
     <link rel="stylesheet" href="../_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/bootswatch-3.2.0/united/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/bootswatch-3.3.4/united/bootstrap.min.css" type="text/css" />
     <link rel="stylesheet" href="../_static/bootstrap-sphinx.css" type="text/css" />
     
     <script type="text/javascript">
@@ -27,7 +27,7 @@
     <script type="text/javascript" src="../_static/translations.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
-    <script type="text/javascript" src="../_static/bootstrap-3.2.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.3.4/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
     <link rel="top" title="documentation Connector " href="../index.html" />
     <link rel="next" title="Queue" href="api_queue.html" />
@@ -101,12 +101,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../project/contributors.html#financial-contributors">Contributeurs financiers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/license.html">Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../project/changes.html">Changements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.0.0 (2015-04-01)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">2.2.0 (2014-05-26)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.1.1 (2014-02-06)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id2">3.1.0 (2015-05-15)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id3">3.0.0 (2015-04-01)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id4">2.2.0 (2014-05-26)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.1.1 (2014-02-06)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../project/changes.html#warning-breaks-compatibility">2.1.0 (2014-01-15 - attention : rupture de compatibilité)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id5">2.0.1 (2013-09-12)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id6">2.0.1 (2013-09-12)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../project/changes.html#id7">2.0.0</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../project/roadmap.html">Roadmap</a></li>
@@ -143,29 +144,33 @@
 <li class="toctree-l2"><a class="reference internal" href="../guides/bootstrap_connector.html#connectorunit-classes">Classes ConnectorUnit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../guides/multiprocessing.html">Connecteur et multiprocessing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/jobrunner.html">Configuring channels and the job runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#what-is-a-channel">What is a channel?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/jobrunner.html#how-to-configure-channels">How to configure Channels?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/multiprocessing.html">Use the connector with multiprocessing workers</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="api_connector.html">Connecteur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_session.html">Session</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_backend.html">Backend</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_backend.html#module-connector.backend_model">Modèles du backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_backend.html#backend-models">Modèles du backend</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_event.html">Événement</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_binder.html">Binder (Liant)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mappeur</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_mapper.html#mappers">Mappeurs</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="api_mapper.html">Mappeur</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_synchronizer.html">Synchroniseur</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">Adaptateur de backend</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api_queue.html">Queue</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.job">Job</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.worker">Worker</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id5">Queue</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api_queue.html#module-connector.queue.model">Modèles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#job">Job</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#worker">Worker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#id1">Queue</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api_queue.html#models">Modèles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="api_exception.html">Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_channels.html">Channels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api_runner.html">Job Runner</a></li>
 </ul>
 </ul>
 </li>
@@ -222,63 +227,8 @@
   <div class="row">
     <div class="col-md-12">
       
-  <div class="section" id="module-connector.unit.backend_adapter">
-<span id="backend-adapter"></span><h1>Adaptateur de backend<a class="headerlink" href="#module-connector.unit.backend_adapter" title="Lien permanent vers ce titre">¶</a></h1>
-<dl class="class">
-<dt id="connector.unit.backend_adapter.BackendAdapter">
-<em class="property">class </em><code class="descclassname">connector.unit.backend_adapter.</code><code class="descname">BackendAdapter</code><span class="sig-paren">(</span><em>connector_env</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#BackendAdapter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.BackendAdapter" title="Lien permanent vers cette définition">¶</a></dt>
-<dd></dd></dl>
-
-<p>Bases : <a class="reference internal" href="api_connector.html#connector.connector.ConnectorUnit" title="connector.connector.ConnectorUnit"><code class="xref py py-class docutils literal"><span class="pre">connector.connector.ConnectorUnit</span></code></a></p>
-<blockquote>
-<div><p>Adaptateur de backend de base pour les connecteurs</p>
-</div></blockquote>
-<dl class="class">
-<dt id="connector.unit.backend_adapter.CRUDAdapter">
-<em class="property">class </em><code class="descclassname">connector.unit.backend_adapter.</code><code class="descname">CRUDAdapter</code><span class="sig-paren">(</span><em>connector_env</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#CRUDAdapter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.CRUDAdapter" title="Lien permanent vers cette définition">¶</a></dt>
-<dd></dd></dl>
-
-<p>Bases : <a class="reference internal" href="#connector.unit.backend_adapter.BackendAdapter" title="connector.unit.backend_adapter.BackendAdapter"><code class="xref py py-class docutils literal"><span class="pre">connector.unit.backend_adapter.BackendAdapter</span></code></a></p>
-<blockquote>
-<div><p>Adaptateur externe de base spécialisé dans la gestion des enregistrements des systèmes externes.</p>
-<p>Sous-classes qui ont leur propre implémentation  pour les méthodes.</p>
-<dl class="method">
-<dt id="connector.unit.backend_adapter.CRUDAdapter.create">
-<code class="descclassname">CRUDAdapter.</code><code class="descname">create</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#CRUDAdapter.create"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.CRUDAdapter.create" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Crée un enregistrement dans le système externe</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connector.unit.backend_adapter.CRUDAdapter.delete">
-<code class="descclassname">CRUDAdapter.</code><code class="descname">delete</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#CRUDAdapter.delete"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.CRUDAdapter.delete" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Supprime un enregistrement sur le système externe</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connector.unit.backend_adapter.CRUDAdapter.read">
-<code class="descclassname">CRUDAdapter.</code><code class="descname">read</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#CRUDAdapter.read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.CRUDAdapter.read" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Renvoie des informations sur l&#8217;enregistrement</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connector.unit.backend_adapter.CRUDAdapter.search">
-<code class="descclassname">CRUDAdapter.</code><code class="descname">search</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#CRUDAdapter.search"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.CRUDAdapter.search" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Recherche des enregistrements correspondant à certains critères et renvoie une liste d&#8217;IDs</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connector.unit.backend_adapter.CRUDAdapter.search_read">
-<code class="descclassname">CRUDAdapter.</code><code class="descname">search_read</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#CRUDAdapter.search_read"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.CRUDAdapter.search_read" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Recherche des enregistrements correspondant à certains critères et renvoie leurs données</p>
-</dd></dl>
-
-<dl class="method">
-<dt id="connector.unit.backend_adapter.CRUDAdapter.write">
-<code class="descclassname">CRUDAdapter.</code><code class="descname">write</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/connector/unit/backend_adapter.html#CRUDAdapter.write"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#connector.unit.backend_adapter.CRUDAdapter.write" title="Lien permanent vers cette définition">¶</a></dt>
-<dd><p>Met à jour les enregistrements sur le système externe</p>
-</dd></dl>
-
-</div></blockquote>
+  <div class="section" id="backend-adapter">
+<h1>Adaptateur de backend<a class="headerlink" href="#backend-adapter" title="Lien permanent vers ce titre">¶</a></h1>
 </div>
 
 
@@ -301,7 +251,7 @@
     </p>
     <p>
         &copy; Copyright 2013, Camptocamp SA.<br/>
-      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.3.1.<br/>
+      Créé avec <a href="http://sphinx-doc.org/">Sphinx</a> 1.3.1.<br/>
     </p>
   </div>
 </footer>
