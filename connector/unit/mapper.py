@@ -198,33 +198,26 @@ def external_to_m2o(field, binding=None):
     def modifier(self, record, to_attr):
         if not record[field]:
             return False
-        column = self.model._fields[to_attr]
+        column = self.model._fields[field]
         if column.type != 'many2one':
             raise ValueError('The column %s should be a Many2one, got %s' %
-                             (to_attr, type(column)))
-        rel_id = record[field]
+                             (field, type(column)))
+        rel_id = record[field].id
         if binding is None:
             binding_model = column.comodel_name
         else:
             binding_model = binding
         binder = self.binder_for(binding_model)
-        # if we want the normal record, not a binding,
-        # we ask to the binder to unwrap the binding
-        unwrap = bool(binding)
-        record = binder.to_internal(rel_id, unwrap=unwrap)
-        if not record:
-            raise MappingError("Can not find an existing %s for external "
-                               "record %s %s unwrapping" %
-                               (binding_model, rel_id,
-                                'with' if unwrap else 'without'))
-        if isinstance(record, models.BaseModel):
-            return record.id
-        else:
-            _logger.debug(
-                'Binder for %s returned an id, '
-                'returning a record should be preferred.', binding_model
-            )
-            return record
+        # if a relation is not a binding, we wrap the record in the
+        # binding, we'll return the id of the binding
+        wrap = bool(binding)
+        value = binder.to_backend(rel_id, wrap=wrap)
+        if not value:
+            raise MappingError("Can not find an external id for record "
+                               "%s in model %s %s wrapping" %
+                               (rel_id, binding_model,
+                                'with' if wrap else 'without'))
+        return value
     return modifier
 
 
